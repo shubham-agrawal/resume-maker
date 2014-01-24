@@ -108,7 +108,8 @@ window.Mercury = {
         sep2:                  ' ',
         historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
         sep3:                  ' ',
-        notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }]
+        notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }],
+        pornPanel:            ['Porn', 'Page Porn']
         },
 
       editable: {
@@ -312,7 +313,15 @@ window.Mercury = {
     // callback functions are executed within the scope of the given region, so you have access to all it's methods.
     behaviors: {
       //foreColor: function(selection, options) { selection.wrap('<span style="color:' + options.value.toHex() + '">', true) },
-      htmlEditor: function() { Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' }); }
+      htmlEditor: function() { Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' }); },
+      pornPanel: function() {
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = "html { color: red }";
+        document.body.appendChild(css);
+        debugger;
+        alert("done");
+      }
       },
 
 
