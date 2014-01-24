@@ -3,21 +3,20 @@ body {
 			margin: 0;
 			padding: 0;
 			
-			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			line-height: 20px;
-			font-size: 13px;
+			font-family: Georgia, 'Myriad Pro', 'Trebuchet MS', Helvetica, Arial;
+			line-height: 18px;
+			font-size: 12px;
 
 			color: #222;
 		}
 
 		h1, h2, h3, h4 {
-			font-family: 'Oswald', Impact, Helvetica, Arial, sans-serif;
-			font-weight: normal;
 			margin: 0 0 15px 0;
 			padding: 0;
+			font-weight: normal;
 		}
 		h1 {
-			font-size: 300%;
+			font-size: 450%;
 		}
 		h2 {
 			font-size: 210%;
@@ -32,7 +31,6 @@ body {
 		
 		ul {
 			margin: 0;
-			list-style-type: square;
 		}
 		
 		/* ________________________________________________________ */
@@ -50,12 +48,14 @@ body {
 			
 			box-shadow: 0 0 6px #ccc;
 		}
-
+		
 		#title {
+			margin: 0px 0 20px 0;
 			line-height: 42px;
-			border-bottom: 3px solid #000;
-			padding-bottom: 30px;
-			margin: 0px 0 30px 0;
+			color: #111;
+			
+			border-bottom: 1px solid #111;
+			padding-bottom: 5px;
 		}
 		
 		#credit {
@@ -69,7 +69,7 @@ body {
 			}
 		
 		p label {
-			font-family: 'Oswald', Helvetica, Arial, serif;
+			font-weight: bold;
 			
 			font-size: 110%;
 			margin-right: 10px;
@@ -81,42 +81,15 @@ body {
 		
 		.section {
 			margin-bottom: 40px;
+			padding-bttom: 20px;
 		}
-		.section .set {
-		}
+		
 		.item {
 			margin: 0 0 20px 0;
 		}
 
 		/*  _____________________________ */
-		.section .title {
-			text-transform: uppercase;
-			font-size: 170%;
-
-			padding: 10px 10px;
-			margin: 0 auto 15px auto;
-
-			display: inline-block;
-			background: #000;
-			color: #fff;
-		}
-			.section .set h3 {
-				margin: 0;
-			}
-
-
-
-		.basic-info {
-			border-top: 0;
-		}
-		.section.basic-info .title {
-			float: left;
-			border: 0;
-		}
-		.basic-info .set {
-			float: right;
-			width: 70%;
-		}
+		
 		.basic-info .address {
 			width: 40%;
 			float: left;
@@ -126,9 +99,6 @@ body {
 			width: 50%;
 			text-align: right;
 		}
-			.basic-info label {
-				font-family: 'Oswald', Helvetica, Arial, serif;
-			}
 			.basic-info label, .basic-info span  {
 				display: inline !important;
 			}
@@ -136,6 +106,20 @@ body {
 			margin: 0;
 		}
 		
+		.section .title {
+			float: left;
+			font-size: 100%;
+			text-transform: uppercase;
+			width: 16%;
+			margin-right: 20px;
+		}
+		.section .set {
+			float: left;
+			width: 78%;
+		}
+			.section .set h3 {
+				margin: 0;
+			}
 		.section span {
 			display: block;
 		}
@@ -149,7 +133,7 @@ body {
 			}
 			.section-education .school,
 			.section-work .job_title {
-				font-size: 100%;
+				font-size: 115%;
 				display: block;
 				margin: 5px 0 5px 0;
 			}
@@ -160,7 +144,6 @@ body {
 			height: 200px;
 			overflow: hidden;
 			float: left;
-			margin-top: 4px;
 			border-radius: 4px;
 		}
 		#photo img {
