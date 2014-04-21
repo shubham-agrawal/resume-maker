@@ -1,0 +1,79 @@
+<title>My CV</title>
+<link rel="stylesheet" type="text/css" href="/assets/themes/metro.css">
+<div id="main">
+   <h1 id="title"><%=@profile.first_name%>&nbsp;<%=@profile.last_name%></h1>
+   <div class="basic-info section">
+      <h2 class="title">Contact</h2>
+      <div class="set">
+         <p class="address">
+            <span class="value">
+            <%=@address%>				</span>
+         </p>
+         <div class="r">
+            <p class="email"><label>E-mail<span class="colon">:</span></label>&nbsp;<%=@email if @email%><span class="value"></span></p>
+            <p class="phone"><label>Phone<span class="colon">:</span></label>&nbsp;<%=@phone if @phone%><span class="value"></span></p>
+         </div>
+         <div class="clear"> </div>
+      </div>
+      <!-- set //-->
+      <div class="clear"> </div>
+   </div>
+   <!-- basic-info //-->
+   <div class="section section-work">
+      <h2 class="title">Work experience</h2>
+      <div class="set">
+         <% @positions.each do |position| %>
+            <div class="item">
+               <h3><span class="company l"><%= position.company.name %></span>
+                  <span class="date r"><%= monthname(position.start_date.month) if position.start_date %>,  <%= position.start_date.year if position.start_date %> — <%= monthname(position.end_date.month) if position.end_date %>  <%= "," + position.end_date.year.to_s if position.end_date %> <%= "present" unless position.end_date %></span>
+               </h3>
+               <span class="clear"> </span>
+               <span class="job_title"><%= position.title %></span><span class="info"><%= position.summary %></span><span class="clear"> </span>
+            </div>
+         <% end %>
+      </div>
+      <div class="clear"> </div>
+   </div>
+   <!--div class="section section-references">
+      <h2 class="title">References</h2>
+      <div class="set">
+         <div class="item">
+            <span class="info">Referenced: Dr. Neena Goveas</span>
+         </div>
+      </div>
+      <div class="clear"> </div>
+   </div-->
+   <div class="section section-education">
+      <h2 class="title">Education</h2>
+      <div class="set">
+         <% @educations.each do |education| %>
+            <div class="item">
+               <h3><span class="course l"><%= education.degree %></span>
+                  <span class="date r"><%= education.start_date.year if education.start_date %> — <%= education.end_date.year if education.end_date %></span>
+               </h3>
+               <span class="clear"> </span>
+               <span class="school">Bits Pilani</span><span class="info"><%= education.field_of_study %> from <%= education.school_name %></span><span class="clear"> </span>
+            </div>
+         <% end %>
+      </div>
+      <div class="clear"> </div>
+   </div>
+   <div class="section section-interests">
+      <h2 class="title">Interests</h2>
+      <div class="set">
+         <div class="item">
+            <span class="info"><%= @interests if @interests %></span>
+         </div>
+      </div>
+      <div class="clear"> </div>
+   </div>
+   <div class="section section-1390552807382">
+      <h2 class="title">Custom Content</h2>
+      <div class="set">
+         <div class="item">
+            <span class="info">This is some custom content.</span>
+         </div>
+      </div>
+      <div class="clear"> </div>
+   </div>
+</div>
