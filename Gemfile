@@ -20,8 +20,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	gem 'meta_request'
+end
 
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'pry'
+gem 'pry-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -38,3 +48,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 gem 'mercury-rails'
 gem 'paperclip'
+gem 'rails_12factor', group: :production
+gem 'linkedin'

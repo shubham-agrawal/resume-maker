@@ -102,14 +102,19 @@ window.Mercury = {
           },
         insertLink:            ['Link', 'Insert Link', { modal: '/mercury/modals/link.html', regions: ['full', 'markdown'] }],
         insertMedia:           ['Media', 'Insert Media (images and videos)', { modal: '/mercury/modals/media.html', regions: ['full', 'markdown'] }],
-        insertTable:           ['Table', 'Insert Table', { modal: '/mercury/modals/table.html', regions: ['full', 'markdown'] }],
+        /*insertTable:           ['Table', 'Insert Table', { modal: '/mercury/modals/table.html', regions: ['full', 'markdown'] }],*/
         insertCharacter:       ['Character', 'Special Characters', { modal: '/mercury/modals/character.html', regions: ['full', 'markdown'] }],
-        snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],
+        /*snippetPanel:          ['Snippet', 'Snippet Panel', { panel: '/mercury/panels/snippets.html' }],*/
         sep2:                  ' ',
-        historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],
+        /*historyPanel:          ['History', 'Page Version History', { panel: '/mercury/panels/history.html' }],*/
         sep3:                  ' ',
-        notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }],
-        pornPanel:            ['Porn', 'Page Porn']
+        /*notesPanel:            ['Notes', 'Page Notes', { panel: '/mercury/panels/notes.html' }],*/
+        switchMetro:           ['Metro', 'Switch to Metro theme'],
+        switchBold:            ['Bold', 'Switch to Bold theme'],
+        switchExecutive:       ['Executive', 'Switch to Executive theme'],
+        switchLiterateur:      ['Literateur', 'Switch to Literateur theme'],
+        switchElegant:         ['Elegant', 'Switch to Elegant theme'],
+        done:                  ['Finished', 'See how it looks'],
         },
 
       editable: {
@@ -314,13 +319,35 @@ window.Mercury = {
     behaviors: {
       //foreColor: function(selection, options) { selection.wrap('<span style="color:' + options.value.toHex() + '">', true) },
       htmlEditor: function() { Mercury.modal('/mercury/modals/htmleditor.html', { title: 'HTML Editor', fullHeight: true, handler: 'htmlEditor' }); },
-      pornPanel: function() {
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = "html { color: red }";
-        document.body.appendChild(css);
-        debugger;
-        alert("done");
+      switchMetro: function() {
+        var content = Mercury.region.content()
+        var newcontent = content.replace(/href=\"\/assets\/themes\/(\w+).css\"/, "href='/assets/themes/metro.css'")
+        Mercury.region.content(newcontent)
+      },
+      switchElegant: function() {
+        var content = Mercury.region.content()
+        var newcontent = content.replace(/href=\"\/assets\/themes\/(\w+).css\"/, "href='/assets/themes/elegant.css'")
+        Mercury.region.content(newcontent)
+      },
+      switchLiterateur: function() {
+        var content = Mercury.region.content()
+        var newcontent = content.replace(/href=\"\/assets\/themes\/(\w+).css\"/, "href='/assets/themes/literateur.css'")
+        Mercury.region.content(newcontent)
+      },
+      switchExecutive: function() {
+        var content = Mercury.region.content()
+        var newcontent = content.replace(/href=\"\/assets\/themes\/(\w+).css\"/, "href='/assets/themes/executive.css'")
+        Mercury.region.content(newcontent)
+      },
+      switchBold: function() {
+        var content = Mercury.region.content()
+        var newcontent = content.replace(/href=\"\/assets\/themes\/(\w+).css\"/, "href='/assets/themes/bold.css'")
+        Mercury.region.content(newcontent)
+      },
+      done: function() {
+        var loc = window.location.toString()
+        var newloc = loc.replace("editor/", "")
+        window.location = newloc
       }
       },
 
@@ -344,6 +371,7 @@ window.Mercury = {
     globalBehaviors: {
       exit: function() { window.location.href = this.iframeSrc() },
       barrelRoll: function() { $('body').css({webkitTransform: 'rotate(360deg)'}) }
+      
       },
 
 

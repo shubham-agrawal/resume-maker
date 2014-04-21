@@ -2,7 +2,10 @@ class ResumesController < ApplicationController
   # GET /resumes
   # GET /resumes.json
   def index
-    @resumes = Resume.all
+    #binding.pry
+    @resumes = Resume.first(5)
+
+    @community_resumes = Resume.where(:category != "sample")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,9 +18,16 @@ class ResumesController < ApplicationController
   def show
     @resume = Resume.find(params[:id])
 
+    # We will worry about the pdf export later on. lets just get the flow and linkedin right right now
+    #binding.pry
+    #@resume[:content] = externals_to_absolute_path(@resume[:content])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resume }
+      format.pdf do
+        render pdf: "resume.pdf", template: "resumes/show.html.erb"
+      end
     end
   end
 
@@ -58,6 +68,13 @@ class ResumesController < ApplicationController
   def update
     @resume = Resume.find(params[:id])
 
+    @resume.content = params[:content][:page_content][:value]  
+    @resume.category = ""
+    @resume.save!
+
+    render text: ""
+
+=begin
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
         format.html { redirect_to @resume, notice: 'Resume was successfully updated.' }
@@ -67,6 +84,7 @@ class ResumesController < ApplicationController
         format.json { render json: @resume.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # DELETE /resumes/1
@@ -79,5 +97,14 @@ class ResumesController < ApplicationController
       format.html { redirect_to resumes_url }
       format.json { head :no_content }
     end
+  end
+
+  def clone 
+    template = Resume.find(params[:resume_id])
+
+    new_record = template.dup
+    new_record.save
+    
+    redirect_to "/editor/resumes/" + new_record.id.to_s
   end
 end

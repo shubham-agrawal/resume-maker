@@ -2,5 +2,8 @@
 <div id="page_content" class="mercury-region" data-mercury="full">
   <%= raw @resume.content %>
 </div>
-<%= link_to "Edit Resume", "/editor" + request.path %> </p>
 </div>
+
+<form style="position:relative; left: 50%;" class="no-print">
+	<input type="button" value="Print this page" onClick="window.print()">
+</form>

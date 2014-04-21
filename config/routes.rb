@@ -1,12 +1,19 @@
 Cvmaker::Application.routes.draw do
-  resources :resumes
+  root :to => "resumes#index"
 
+  resources :resumes do
+    post 'clone', :as => 'clone' 
+  end
 
-    namespace :mercury do
-      resources :images
-    end
+  namespace :mercury do
+    resources :images
+  end
 
   mount Mercury::Engine => '/'
+
+  get 'authenticate' => 'authenticate#index'
+  get 'authenticate/callback' => 'authenticate#callback'
+  get 'authenticate/logout' => 'authenticate#logout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
